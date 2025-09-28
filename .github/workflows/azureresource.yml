@@ -2,6 +2,25 @@ name: Terraform Deployment to Azure
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment"
+        required: true
+        default: dev
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+      action:
+        description: "Choose plan/apply"
+        required: false
+        default: plan
+        type: choice
+        options:
+          - plan
+          - apply
+
   push:
     paths:
       - '**/*.tf'
@@ -28,7 +47,10 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-      
+
+      - name: Select Workspace
+        run: terraform workspace select ${{ inputs.environment }} || terraform workspace new ${{ inputs.environment }} 
+
       - name: Terraform Import Resource
         run: terraform import azurerm_resource_group.example "/subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/813-11ca4b41-hands-on-with-terraform-on-azure"
 
@@ -36,8 +58,10 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var-file="${{ inputs.environment }}.tfvars"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        #only apply from main branch
+        if: github.ref == 'refs/heads/main'       
+        run: terraform apply -auto-approve -var-file="${{ inputs.environment }}.tfvars"
 
