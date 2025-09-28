@@ -15,8 +15,3 @@ provider "azurerm" {
   features {}
   resource_provider_registrations = "none"
 }
-
-# Create a resource group in Azure
-data "azurerm_resource_group" "example" {
-  name     = "813-11ca4b41-hands-on-with-terraform-on-azure" #need to update
-}
