@@ -13,7 +13,7 @@ terraform {
 # Configure the AzureRM provider
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
+  #resource_provider_registrations = "none"
 }
 
 # Create a resource group in Azure
