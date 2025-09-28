@@ -14,10 +14,6 @@ terraform {
 provider "azurerm" {
   features {}
   resource_provider_registrations = "none"
-  tenant_id                       = "var.tenant_id"     # Tenant ID
-  subscription_id                 = "var.subscription_id"     # Subscription ID
-  client_id                       = "var.client_id"     # Service principle Id
-  client_secret                   = "var.client_secret" # Service principle secret
 }
 
 # Create a resource group in Azure
