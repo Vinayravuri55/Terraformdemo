@@ -1,5 +1,5 @@
 data "azurerm_resource_group" "example" {
-  name     = "813-11ca4b41-hands-on-with-terraform-on-azure" #need to update
+  name     = "813-f7211083-hands-on-with-terraform-on-azure" #need to update
 }
 
 resource "azurerm_app_service_plan" "example" {
