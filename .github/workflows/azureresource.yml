@@ -1,4 +1,4 @@
-name: Terraform Deployment to Azure
+name: Terraform Dev Deployment to Azure
 
 on:
   workflow_dispatch:
@@ -52,7 +52,7 @@ jobs:
         run: env | grep ARM_
       
       - name: Terraform Import Resource
-        run: terraform import azurerm_resource_group.example "/subscriptions/80ea84e8-afce-4851-928a-9e2219724c69/resourceGroups/813-f7211083-hands-on-with-terraform-on-azure"
+        run: terraform import azurerm_resource_group.example "/subscriptions/ARM_SUBSCRIPTION_ID/resourceGroups/813-f7211083-hands-on-with-terraform-on-azure"
 
       - name: Terraform Validate
         run: terraform validate
