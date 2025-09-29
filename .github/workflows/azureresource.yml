@@ -44,6 +44,7 @@ jobs:
           echo "ARM_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" >> $GITHUB_ENV
           echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
           echo "ARM_TENANT_ID=${{ secrets.AZURE_TENANT_ID }}" >> $GITHUB_ENV
+          echo "ARM_RESOURCEGROUP_ID= ${{ secrets.AZURE_RESOURCEGROUP_ID }}" >> $GITHUB_ENV
 
       - name: Terraform Init
         run: terraform init
@@ -52,7 +53,7 @@ jobs:
         run: env | grep ARM_
       
       - name: Terraform Import Resource
-        run: terraform import azurerm_resource_group.example "/subscriptions/ARM_SUBSCRIPTION_ID/resourceGroups/813-f7211083-hands-on-with-terraform-on-azure"
+        run: terraform import azurerm_resource_group.example "/subscriptions/ARM_SUBSCRIPTION_ID/resourceGroups/ARM_RESOURCEGROUP_ID"
 
       - name: Terraform Validate
         run: terraform validate
