@@ -18,6 +18,6 @@ provider "azurerm" {
 
 # Create a resource group in Azure
 resource "azurerm_resource_group" "example" {
-  name     = "813-f7211083-hands-on-with-terraform-on-azure" #need to update
-  location = "South Central US"
+  name     = "813-9e95721c-hands-on-with-terraform-on-azure" #need to update
+  location = "East US"
 }
