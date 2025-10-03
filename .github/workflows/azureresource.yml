@@ -53,7 +53,7 @@ jobs:
         run: env | grep ARM_
       
       - name: Terraform Import Resource
-        run: terraform import azurerm_resource_group.example "/subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.AZURE_RESOURCEGROUP_ID }}"
+        run: terraform import azurerm_resource_group.example "/subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/813-68e72ea8-hands-on-with-terraform-on-azure"
 
       - name: Terraform Validate
         run: terraform validate
